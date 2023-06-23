@@ -1,6 +1,5 @@
+#imports sqlite3
 import sqlite3
-
-#create the SQL functionality
 
 #Connect SQL to the database
 connection = sqlite3.Connection('database\\UserData.db')
@@ -35,19 +34,22 @@ def ProfileCreator():
 def CheckData():
   #check username
   while True:
+    cursor.execute(f"SELECT username FROM UserData")
+    UserDetailResults_User = cursor.fetchone()
+
     C_username = input("Enter your username, please: ")
-    if cursor.execute(f"SELECT * FROM UserData WHERE username = '{C_username}' IS NOT NULL"):
+    if C_username == UserDetailResults_User[0]:
       break
     else:    
       print(f"No account matches the username: {C_username}")
 
   #gets the users details from the database
   cursor.execute(f"SELECT password FROM UserData WHERE username = '{C_username}'")
-  UserDetailResults = cursor.fetchone()
+  UserDetailResults_Pass = cursor.fetchone()
   
   while True:
     C_password = input("Enter your password, please: ")
-    if C_password == UserDetailResults[0]:
+    if C_password == UserDetailResults_Pass[0]:
       print(f"Welcome {C_username}")
       break
     else:
