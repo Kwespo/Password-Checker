@@ -2,7 +2,7 @@
 import sqlite3
 
 #Connect SQL to the database
-connection = sqlite3.Connection('database\\UserData.db')
+connection = sqlite3.Connection('database/database.db')
 
 #add the SQL functionality
 cursor = connection.cursor()
@@ -55,7 +55,6 @@ def CheckData():
     else:
       print("Wrong password. Please try again")
 
-
 def Action():
   action = input("1 to make an account or 2 to sign in: ")
   if action == "1":
@@ -65,8 +64,5 @@ def Action():
   else: 
     print("Please use a valid option")
 
-
-
 if __name__ == "__main__":
   Action()
-
