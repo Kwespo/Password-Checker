@@ -21,3 +21,4 @@ for i in range(passLen):
 
 cursor.execute(f"INSERT INTO userPassword (software, password) VALUES(?,?)", (software, password))
 connection.commit()
+print(f"\nPassword: {password} has been made and added to the database")
