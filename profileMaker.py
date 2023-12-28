@@ -27,14 +27,14 @@ def ProfileCreator():
       else:
         print("Username must be at least 12 characters but smaller or equal to 24")
     
-    cursor.execute(f"INSERT INTO UserData Values('{username}', '{email}', '{password}')")
+    cursor.execute("INSERT INTO userData (username, email, password) VALUES(?,?,?)", (username, email, password))
     connection.commit()
 
 #checks the inputted data to see if its an account, if it as itll sign you in.
 def CheckData():
   #check username
   while True:
-    cursor.execute(f"SELECT username FROM UserData")
+    cursor.execute("SELECT username FROM UserData")
     UserDetailResults_User = cursor.fetchone()
 
     C_username = input("Enter your username, please: ")
